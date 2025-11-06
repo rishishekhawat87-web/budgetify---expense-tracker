@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: expense-tracker
+    env: node
+    plan: free
+    buildCommand: npm install && npm run client-install && npm run build --prefix client
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+    healthCheckPath: /
+
